@@ -4,7 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import newRequest from "../../utils/newRequest";
 import { useParams } from "react-router-dom";
-import CheckoutForm from "../../components/checkoutForm/CheckoutForm";
+import CheckoutForm from "../../components/checkoutForm/checkoutForm";
 
 const stripePromise = loadStripe(
   "pk_test_51PvJrCFnPX0HQsMmNKkRlXhur59ZoBelMeu1Nbr0aIzl5WQ9s58nOUUpAQVH7cCs8Gn0FztwYB9GKH9GOyWZA7UG00FAPvcAk8"

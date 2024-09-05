@@ -43,6 +43,7 @@ export const login = async (req, res, next) => {
         sameSite: 'none' ,
         httpOnly: true,
         secure:true,
+        domain: 'fiver-clone-frontend-1fga.vercel.app'
       })
       .status(200)
       .send(info);

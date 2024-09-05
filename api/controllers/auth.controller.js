@@ -22,6 +22,7 @@ export const register = async (req, res, next) => {
 export const login = async (req, res, next) => { 
   try {
     const user = await User.findOne({ username: req.body.username });
+    const age = 1000 * 60 * 60 * 24 * 7;
 
     if (!user) return next(createError(404, "User not found!"));
 
@@ -34,7 +35,8 @@ export const login = async (req, res, next) => {
         id: user._id,
         isSeller: user.isSeller,
       },
-      process.env.JWT_KEY
+      process.env.JWT_KEY,
+      { expiresIn: age }
     );
 
     const { password, ...info } = user._doc;
@@ -43,6 +45,7 @@ export const login = async (req, res, next) => {
         sameSite: 'none' ,
         httpOnly: true,
         secure:true,
+        maxAge: age,
         domain: 'fiver-clone-frontend-1fga.vercel.app'
       })
       .status(200)

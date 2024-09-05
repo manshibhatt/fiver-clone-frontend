@@ -1,8 +1,5 @@
-import axios from "axios";
+const getCurrentUser = () => {
+  return JSON.parse(localStorage.getItem("currentUser"));
+};
 
-const newRequest = axios.create({
-  baseURL: "https://fiver-clone-frontend-2.onrender.com/api/",
-  withCredentials: true,
-});
-
-export default newRequest;
+export default getCurrentUser

@@ -8,7 +8,7 @@ export const register = async (req, res, next) => {
   try {
     const hash = bcrypt.hashSync(req.body.password, 5);
     const newUser = new User({
-      ...req.body,
+      ...req.body, 
       password: hash,
     });
 
@@ -45,9 +45,8 @@ export const login = async (req, res, next) => {
         sameSite: 'none' ,
         httpOnly: true,
         secure:true,
-        maxAge: age,
-        domain: 'fiver-clone-frontend-1fga.vercel.app'
-      })
+        maxAge: age
+      }) 
       .status(200)
       .send(info);
   } catch (err) {

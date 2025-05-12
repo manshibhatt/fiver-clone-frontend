@@ -59,16 +59,12 @@ const CheckoutForm = () => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        // Make sure to change this to your payment completion page
+        
         return_url: "https://fiver-clone-frontend-1fga.vercel.app/success",
+        // return_url: "http://localhost:5173/success",
       },
     });
 
-    // This point will only be reached if there is an immediate error when
-    // confirming the payment. Otherwise, your customer will be redirected to
-    // your `return_url`. For some payment methods like iDEAL, your customer will
-    // be redirected to an intermediate site first to authorize the payment, then
-    // redirected to the `return_url`.
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);
     } else {
@@ -87,8 +83,16 @@ const CheckoutForm = () => {
       <LinkAuthenticationElement
         id="link-authentication-element"
         onChange={(e) => setEmail(e.target.value)}
-      />
-      <PaymentElement id="payment-element" options={paymentElementOptions} />
+      /> 
+     <div id="card-number" style={{
+  fontSize: '0.8rem',
+  color: '#888',
+  marginTop: '0.5rem',
+  fontStyle: 'italic'
+}}>
+  Use card number as 4242 4242 4242 4242 in case of invalid
+</div>
+      <PaymentElement id="payment-element" options={paymentElementOptions} />  
       <button disabled={isLoading || !stripe || !elements} id="submit">
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}

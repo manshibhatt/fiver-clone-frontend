@@ -19,7 +19,7 @@ const connect = async () => {
     try {
       await mongoose.connect(process.env.MONGO);
       console.log("Connected to mongoDB!");
-    } catch (error) { 
+    } catch (error) {  
       console.log(error);
     }
   };
@@ -28,6 +28,7 @@ dotenv.config();
  
 
 app.use(cors({ origin: "https://fiver-clone-frontend-1fga.vercel.app", credentials: true }));
+// app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -44,14 +45,14 @@ app.use((err, req, res, next) => {
   const errorMessage = err.message || "Something went wrong!";
 
   return res.status(errorStatus).send(errorMessage);
-});
+}); 
 
-const PORT = process.env.PORT || 8800;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, ()=>{
     connect()
     console.log("Backend server is running!") 
-}) 
+})  
 
 
  

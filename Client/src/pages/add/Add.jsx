@@ -61,9 +61,39 @@ const Add = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  
+    // List of required fields
+    const requiredFields = [
+      "title",
+      "cat",
+      "cover",
+      "desc",
+      "shortTitle",
+      "shortDesc",
+      "deliveryTime",
+      "revisionNumber",
+      "price",
+    ];
+  
+    // Check if any field is missing or empty
+    const emptyField = requiredFields.find((field) => {
+      return (
+        state[field] === undefined ||
+        state[field] === null ||
+        state[field] === "" ||
+        (typeof state[field] === "number" && isNaN(state[field]))
+      );
+    });
+  
+    if (emptyField) {
+      alert(`Please fill out the '${emptyField}' field.`);
+      return;
+    }
+  
     mutation.mutate(state);
-    // navigate("/mygigs")
+    navigate("/mygigs");
   };
+  
 
   return (
     <div className="add">

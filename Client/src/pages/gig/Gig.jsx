@@ -12,7 +12,7 @@ function Gig() {
   const { isLoading, error, data } = useQuery({
     queryKey: ["gig"],
     queryFn: () =>
-      newRequest.get(`/gigs/single/${id}`).then((res) => {
+      newRequest.get(`/gigs/single/${id}`).then((res) => { 
         return res.data;
       }),
   });

@@ -32,7 +32,16 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const url = await upload(file);
+    let url = null;
+
+    if (file) {
+      try {
+        url = await upload(file);
+      } catch (uploadErr) {
+        console.log("File upload failed:", uploadErr);
+      }
+    }
+
     try {
       await newRequest.post("/auth/register", {
         ...user,
@@ -40,7 +49,15 @@ function Register() {
       });
       navigate("/")
     } catch (err) {
-      console.log(err); 
+      if (
+        err.response?.status === 500 &&
+        err.response?.data?.includes("duplicate key")
+      ) {
+        alert("Username already exists. Continue to login");
+      } else {
+        console.log("Registration failed:", err);
+        alert("Something went wrong. Please try again.");
+      }
     }
   };
   return (
@@ -48,7 +65,7 @@ function Register() {
       <form onSubmit={handleSubmit}>
         <div className="left">
           <h1>Create a new account</h1>
-          <label htmlFor="">Username</label>
+          <label htmlFor="">Username</label> 
           <input
             name="username"
             type="text"

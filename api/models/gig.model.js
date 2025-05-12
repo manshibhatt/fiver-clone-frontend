@@ -37,7 +37,7 @@ const GigSchema = new Schema(
     },
     images: {
       type: [String],
-      required: false,
+      required: true,
     },
     userId: {
       type: String,

@@ -13,7 +13,7 @@ const Success = () => {
       try {
         await newRequest.put("/orders", { payment_intent });
         setTimeout(() => {
-          navigate("/orders");
+          navigate("/");
         }, 5000);
       } catch (err) {
         console.log(err);
@@ -25,7 +25,7 @@ const Success = () => {
 
   return (
     <div>
-      Payment successful. You are being redirected to the orders page. Please do
+      Payment successful. You are being redirected to the home page. Please do
       not close the page
     </div>
   );

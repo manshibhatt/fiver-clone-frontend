@@ -4,7 +4,7 @@
     justify-content: center;
   
     form {
-      width: 960px;
+      width: 80%;
       padding: 100px 0px;
       display: flex;
       gap: 120px;
@@ -103,5 +103,10 @@
           }
         }
       }
+    }
+  }
+  @media screen and (max-width:750px) {
+    .register form{
+      flex-direction: column;
     }
   }

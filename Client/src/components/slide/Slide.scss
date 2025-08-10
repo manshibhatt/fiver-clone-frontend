@@ -4,8 +4,9 @@
   padding: 100px 0px;
   
   .container {
-    width: 1400px;
+    width: 100%;
     position: relative;
+    margin: 0px 20px;
   }
 
   .carousel-initialized {
@@ -21,10 +22,13 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    margin: auto;
+    margin: auto 40px;
   }
 
   .carousel-prev {
     left: -25px;
+  }
+  .carousel-next{
+    right: -15px;
   }
 }

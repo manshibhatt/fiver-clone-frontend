@@ -40,5 +40,15 @@
         color: red;
         font-size: 12px;
       }
+
+    }
+
+  }
+
+  @media screen and (max-width: 640px) {
+   .login form{
+    // border: 2px solid red;
+    width: 90%; 
+    margin: 0px 20px;
     }
   }

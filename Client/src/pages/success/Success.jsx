@@ -24,7 +24,7 @@ const Success = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{"width":"90%"}}>
       Payment successful. You are being redirected to the home page. Please do
       not close the page
     </div>

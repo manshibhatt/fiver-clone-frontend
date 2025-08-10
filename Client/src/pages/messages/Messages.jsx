@@ -7,6 +7,7 @@ import moment from "moment";
 
 const Messages = () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const isSmallScreen = window.innerWidth<=600;
 
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -68,7 +69,10 @@ const Messages = () => {
                   onClick={(e) => handleRowClick(e, c.id)}
                   style={{ cursor: "pointer" }}
                 >
-                  <td>{currentUser.isSeller ? c.buyerId : c.sellerId}</td>
+                  <td>{currentUser.isSeller ? 
+                 isSmallScreen? `${c.buyerId.slice(0,6)}...` : c.buyerId :
+                 isSmallScreen? `${c.sellerId.slice(0,6)}...`: c.sellerId
+                 }</td>
                   <td>{c?.lastMessage?.substring(0, 100)}...</td>
                   <td>{moment(c.updatedAt).fromNow()}</td>
                   <td>

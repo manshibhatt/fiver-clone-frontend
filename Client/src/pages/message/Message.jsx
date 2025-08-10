@@ -62,7 +62,7 @@ const Message = () => {
         <hr />
         <form className="write" onSubmit={handleSubmit}>
           <textarea type="text" placeholder="write a message" />
-          <button type="submit">Send</button>
+          <button className="submit-btn" type="submit">Send</button>
         </form>
       </div>
     </div>

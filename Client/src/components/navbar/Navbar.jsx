@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import "./Navbar.scss";
+import { FaBars, FaTimes } from "react-icons/fa"; 
 
 function Navbar() {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   const { pathname } = useLocation();
 
@@ -43,7 +45,10 @@ function Navbar() {
           </Link>
           <span className="dot">.</span>
         </div>
-        <div className="links">
+        <div className="hamburger" onClick={() => setShowMenu(!showMenu)}>
+          {showMenu ? <FaTimes /> : <FaBars />}
+        </div>
+        <div className={ `links ${showMenu?"show":""}`}>
           <span>Fiverr Business</span>
           <span>Explore</span>
           <span>English</span>

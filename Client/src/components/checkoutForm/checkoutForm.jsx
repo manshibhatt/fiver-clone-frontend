@@ -5,6 +5,7 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
+import './checkoutForm.scss'
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -60,8 +61,8 @@ const CheckoutForm = () => {
       elements,
       confirmParams: {
         
-        // return_url: "https://fiver-clone-frontend-1fga.vercel.app/success",
-        return_url: "http://localhost:5173/success",
+        return_url: "https://fiver-clone-frontend-1fga.vercel.app/success",
+        // return_url: "http://localhost:5173/success",
       },
     });
 
@@ -90,10 +91,10 @@ const CheckoutForm = () => {
   marginTop: '0.5rem',
   fontStyle: 'italic'
 }}>
-  Use card number as 4242 4242 4242 4242 in case of invalid
+  <span style={{"color":"red"}}>Use card number as 4242 4242 4242 4242 for test</span>
 </div>
       <PaymentElement id="payment-element" options={paymentElementOptions} />  
-      <button disabled={isLoading || !stripe || !elements} id="submit">
+      <button disabled={isLoading || !stripe || !elements} id="submit" className="submit">
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>

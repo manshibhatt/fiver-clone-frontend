@@ -3,10 +3,11 @@
   justify-content: center;
 
   .container {
-    width: 1400px;
+    width: 100%;
     padding: 30px 0px;
     display: flex;
     gap: 50px;
+    margin: 0px 20px;
 
     .left {
       flex: 2;
@@ -61,9 +62,12 @@
 
       .slider {
         background-color: #F5F5F5;
+        width: 100%;
         img {
-          max-height: 500px;
-          object-fit: contain;
+          // max-height: 500px;
+          // object-fit: contain;
+          // width: 100vw;
+          width: 100%;
         }
       }
 
@@ -295,5 +299,12 @@
         cursor: pointer;
       }
     }
+  }
+}
+
+@media screen and (max-width:1024px) {
+  .gig .container{
+    gap: 25px;
+    flex-direction: column;
   }
 }

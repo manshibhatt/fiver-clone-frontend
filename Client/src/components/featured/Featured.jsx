@@ -30,12 +30,14 @@ function Featured() {
             </div>
             <button onClick={handleSubmit}>Search</button>
           </div>
-          <div className="popular">
+          <div className="popular-container">
             <span>Popular:</span>
+            <div className="popular">
             <button>Web Design</button>
             <button>WordPress</button>
             <button>Professional Logo Design</button>
             <button>Social Media Management</button>
+            </div>
           </div>
         </div>
         <div className="right">

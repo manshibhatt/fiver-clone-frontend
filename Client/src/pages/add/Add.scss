@@ -3,7 +3,7 @@
   justify-content: center;
 
   .container {
-    width: 1400px;
+    width: 95%;
     padding: 50px 0px;
 
     h1 {
@@ -17,6 +17,11 @@
       display: flex;
       justify-content: space-between;
       gap: 100px;
+
+      @media screen and (max-width: 700px) {
+        gap: 50px;
+        flex-direction: column;
+      }
 
       label {
         color: gray;

@@ -27,7 +27,7 @@ const GigCard = ({ item }) => {
               <span>{data.username}</span> 
             </div>
           )}
-          <p>{item.desc}</p>
+          <p>{item.desc.length>70? item.desc.slice(0,70)+"...":item.desc}</p>
           <div className="star">
             <img src="./img/star.png" alt="" />
             <span>

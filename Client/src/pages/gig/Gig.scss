@@ -302,9 +302,16 @@
   }
 }
 
+.slider-container{
+  width: 50vw;
+}
+
 @media screen and (max-width:1024px) {
   .gig .container{
     gap: 25px;
     flex-direction: column;
+  }
+  .slider-container{
+    width: 90vw;
   }
 }

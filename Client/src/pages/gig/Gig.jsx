@@ -1,10 +1,45 @@
 import React from "react";
 import "./Gig.scss";
-import { Slider } from "infinite-react-carousel/lib";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import Reviews from "../../components/reviews/Reviews";
+
+const ImageCarousel = ({ data }) => {
+  const settings = {
+    dots: true,            // show navigation dots
+    infinite: true,        // loop infinitely
+    speed: 500,            // transition speed
+    slidesToShow: 1,       // number of slides at once
+    slidesToScroll: 1,     // number of slides per scroll
+    arrows: true,          // show prev/next arrows
+    adaptiveHeight: true,  // adjust height based on image
+  };
+
+  return (
+    <div className="slider-container">
+      <Slider {...settings}>
+        {data.images.map((img, index) => (
+          <div key={index}>
+            <img
+              src={img}
+              alt={`Slide ${index}`}
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: "8px",
+              }}
+            />
+          </div>
+        ))}
+      </Slider>
+    </div>
+  );
+};
+
 
 function Gig() {
   const { id } = useParams();
@@ -69,11 +104,12 @@ function Gig() {
                 )}
               </div>
             )}
-            <Slider slidesToShow={1} arrowsScroll={1} className="slider">
+            {/* <Slider slidesToShow={1} arrowsScroll={1} className="slider">
               {data.images.map((img) => (
                 <img key={img} src={img} alt="" />
               ))}
-            </Slider>
+            </Slider> */}
+            <ImageCarousel data={data}/>
             <h2>About This Gig</h2>
             <p>{data.desc}</p>
             {isLoadingUser ? (

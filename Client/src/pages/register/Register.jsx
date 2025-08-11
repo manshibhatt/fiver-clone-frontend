@@ -47,7 +47,8 @@ function Register() {
         ...user,
         img: url,
       });
-      navigate("/")
+      alert("Signup Successful.Please login");
+      navigate("/login");
     } catch (err) {
       if (
         err.response?.status === 500 &&
